@@ -1,0 +1,38 @@
+html,
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin: 0;
+}
+
+.calculatorBody {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+}
+
+.calculator {
+    background-color: red;
+    width: 400px;
+    height: 600px;
+}
+
+.display {
+    height: 95px;
+}
+
+button {
+    width: 90px;
+    height: 100px;
+}
+
+.editorNote {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    color: black;
+    font-size: 14px;
+}
