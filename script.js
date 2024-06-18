@@ -2,22 +2,27 @@ let num1;
 let num2;
 let operator;
 
+// Add first number to second
 function add(a, b) {
     return a + b;
 }
 
+// Subtract second number from the first
 function subtract(a, b) {
-    return a- b;
+    return a - b;
 }
 
+// Multiply first number by the second
 function multiply(a, b) {
     return a * b;
 }
 
+// Divide first number by the second
 function divide(a, b) {
     return a / b;
 }
 
+// Call the specified function and run calculation
 function operate (opr, num1, num2) {
     switch(opr) {
         case "+":
@@ -37,6 +42,7 @@ function operate (opr, num1, num2) {
     return value;
 }
 
+// TEST AREA
 console.log(add(1, 2));
 console.log(subtract(10, 4));
 console.log(multiply(4, 5));
