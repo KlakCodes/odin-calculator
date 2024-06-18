@@ -1,30 +1,31 @@
 let num1;
 let num2;
 let operator;
+let displayVal = 0;
 
 // Add first number to second
 function add(a, b) {
     return a + b;
-}
+};
 
 // Subtract second number from the first
 function subtract(a, b) {
     return a - b;
-}
+};
 
 // Multiply first number by the second
 function multiply(a, b) {
     return a * b;
-}
+};
 
 // Divide first number by the second
 function divide(a, b) {
     return a / b;
-}
+};
 
 // Call the specified function and run calculation
-function operate (opr, num1, num2) {
-    switch(opr) {
+function operate(opr, num1, num2) {
+    switch (opr) {
         case "+":
             value = add(num1, num2);
             break;
@@ -40,7 +41,23 @@ function operate (opr, num1, num2) {
     }
 
     return value;
-}
+}; 
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector("#ac").onclick = () => {
+        display.textContent = "";
+        num1 = "";
+        num2 = "";
+        operator = "";
+    };
+
+    let display = document.querySelector(".display");
+    function enterNum1(input) {
+        num1 = display.textContent + input;
+        display.textContent = num1;
+    } 
+    document.querySelector("#zero").onclick = () => enterNum1(0);
+});
 
 // TEST AREA
 console.log(add(1, 2));
