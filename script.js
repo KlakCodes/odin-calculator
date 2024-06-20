@@ -5,7 +5,7 @@ let displayVal = 0;
 
 // Add first number to second
 function add(a, b) {
-    return a + b;
+    return +a + +b;
 };
 
 // Subtract second number from the first
@@ -41,29 +41,56 @@ function operate(opr, num1, num2) {
     }
 
     return value;
-}; 
+};
 
 document.addEventListener('DOMContentLoaded', () => {
+    // AC button - Clears display and variables
     document.querySelector("#ac").onclick = () => {
         display.textContent = "";
         num1 = "";
-        num2 = "";
-        operator = "";
+        num2 = undefined;
+        operator = undefined;
     };
 
     let display = document.querySelector(".display");
-    function enterNum1(input) {
-        num1 = display.textContent + input;
-        display.textContent = num1;
+
+    function enterNum(input) {
+        if (operator === undefined && num2 === undefined) {
+            num1 = display.textContent + input;
+            display.textContent = num1;
+        } else if (num2 === undefined) {
+            display.textContent = "";
+            num2 = display.textContent + input;
+            display.textContent = num2;
+        } else {
+            num2 = display.textContent + input;
+            display.textContent = num2; 
+        }
     };
 
-    const numBtns =  document.querySelectorAll(".numBtn");
-
-    numBtns.forEach((btn) => {
+    // Display selected number on screen when pressed
+    const btnNums =  document.querySelectorAll(".btnNum");
+    btnNums.forEach((btn) => {
         btn.addEventListener("click", () => {
-            enterNum1(btn.id);
-            console.log(num1);
+            enterNum(btn.id);
         });
+    });
+
+    const btnOps = document.querySelectorAll(".btnOp");
+    btnOps.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            if(btn.id === "=") {
+                console.log(`${num1} ${operator} ${num2}`);
+                num1 = operate(operator, num1, num2);
+                num2 = undefined;
+                operator = undefined;
+                display.textContent = num1;
+
+            } else {
+                operator = btn.textContent;
+                display.textContent = operator;
+            }
+        })
     });
 });
 
