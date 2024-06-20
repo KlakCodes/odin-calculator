@@ -55,8 +55,16 @@ document.addEventListener('DOMContentLoaded', () => {
     function enterNum1(input) {
         num1 = display.textContent + input;
         display.textContent = num1;
-    } 
-    document.querySelector("#zero").onclick = () => enterNum1(0);
+    };
+
+    const numBtns =  document.querySelectorAll(".numBtn");
+
+    numBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            enterNum1(btn.id);
+            console.log(num1);
+        });
+    });
 });
 
 // TEST AREA
