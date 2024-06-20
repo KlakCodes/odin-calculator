@@ -81,17 +81,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnOps = document.querySelectorAll(".btnOp");
     btnOps.forEach((btn) => {
         btn.addEventListener("click", () => {
-            if(btn.id === "=") {
+            if(btn.id === "=" && num2 !== undefined) {
                 console.log(`${num1} ${operator} ${num2}`);
                 num1 = operate(operator, num1, num2);
                 num2 = undefined;
                 operator = undefined;
                 display.textContent = num1;
-
-            } else {
+            } else if (btn.id !== "=") {
                 operator = btn.textContent;
                 display.textContent = operator;
             }
         })
     });
+
+    // Add a decimal point to the current active num
+    document.querySelector("#dot").onclick = () => {
+        if(num2 === undefined && num1 !== undefined) {
+            if(num1.includes(".") === false) {
+                num1 = num1 + ".";
+                display.textContent = num1;
+            };
+        } else if (num2 !== undefined) {
+            if(num2.includes(".") === false) {
+                num2 = num2 + ".";
+                display.textContent = num2;
+            }
+        }
+    };
+
+    document.querySelector("#backspace").onclick = () => {
+        if(num2 === undefined && num1 !== undefined) {
+            let arr = display.textContent.split('');
+            arr.pop();
+            num1 = arr.join('');
+            display.textContent = num1;
+        } else if (num2 !== undefined) {
+            let arr = display.textContent.split('');
+            arr.pop();
+            num2 = arr.join('');
+            display.textContent = num2;            
+        }
+    };
 });

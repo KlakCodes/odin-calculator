@@ -57,6 +57,7 @@ button {
 .btnAlt {
     background-color: darkblue;
     color: white;
+    width: 296px;
 }
 
 .editorNote {
