@@ -1,7 +1,6 @@
 let num1;
 let num2;
 let operator;
-let displayVal = 0;
 
 // Add first number to second
 function add(a, b) {
@@ -54,6 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let display = document.querySelector(".display");
 
+    // Update display and variable after each key press
     function enterNum(input) {
         if (operator === undefined && num2 === undefined) {
             num1 = display.textContent + input;
@@ -76,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // If equals is pressed then calculate, if operator is pressed 
+    // then store as variable
     const btnOps = document.querySelectorAll(".btnOp");
     btnOps.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -93,11 +95,3 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     });
 });
-
-// TEST AREA
-console.log(add(1, 2));
-console.log(subtract(10, 4));
-console.log(multiply(4, 5));
-console.log(divide(40, 5));
-
-console.log(operate("/", 10, 6));
