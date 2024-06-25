@@ -1,4 +1,4 @@
-let num1;
+let num1 = "";
 let num2;
 let operator;
 
@@ -56,14 +56,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update display and variable after each key press
     function enterNum(input) {
         if (operator === undefined && num2 === undefined) {
-            num1 = display.textContent + input;
+            num1 += input;
             display.textContent = num1;
         } else if (num2 === undefined) {
+            num2 = ""
             display.textContent = "";
-            num2 = display.textContent + input;
+            num2 += input;
             display.textContent = num2;
         } else {
-            num2 = display.textContent + input;
+            num2 += input;
             display.textContent = num2; 
         }
     };
@@ -91,19 +92,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 operator = btn.textContent;
                 display.textContent = operator;
             }
-        })
+        });
     });
 
     // Add a decimal point to the current active num
     document.querySelector("#dot").onclick = () => {
         if(num2 === undefined && num1 !== undefined) {
-            if(num1.includes(".") === false) {
-                num1 = num1 + ".";
+            if(num1.toString().includes(".") === false) {
+                num1 += ".";
                 display.textContent = num1;
             };
         } else if (num2 !== undefined) {
-            if(num2.includes(".") === false) {
-                num2 = num2 + ".";
+            if(num2.toString().includes(".") === false) {
+                num2 += ".";
                 display.textContent = num2;
             }
         }
