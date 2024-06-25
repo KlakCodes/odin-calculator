@@ -77,6 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    function calculate() {
+        num1 = operate(operator, num1, num2);
+        num2 = undefined;
+        operator = undefined;
+        display.textContent = num1;
+    }
+
     // If equals is pressed then calculate, if operator is pressed 
     // then store as variable
     const btnOps = document.querySelectorAll(".btnOp");
@@ -84,13 +91,13 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener("click", () => {
             if(btn.id === "=" && num2 !== undefined) {
                 console.log(`${num1} ${operator} ${num2}`);
-                num1 = operate(operator, num1, num2);
-                num2 = undefined;
-                operator = undefined;
-                display.textContent = num1;
+                calculate();
+            } else if (btn.id !== "=" && operator !== undefined && num2 !== undefined) {
+                console.log(`${num1} ${operator} ${num2}`);
+                calculate();
+                operator = btn.textContent;
             } else if (btn.id !== "=") {
                 operator = btn.textContent;
-                display.textContent = operator;
             }
         });
     });
@@ -110,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Remove last character from the display
     document.querySelector("#backspace").onclick = () => {
         if(num2 === undefined && num1 !== undefined) {
             let arr = display.textContent.split('');
