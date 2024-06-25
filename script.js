@@ -42,7 +42,6 @@ function operate(opr, num1, num2) {
             value = divide(num1, num2);
             break;
     }
-
     return value;
 };
 
@@ -81,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Operate the given inputs and store the answer as num1
     function calculate() {
         num1 = operate(operator, num1, num2);
         num2 = undefined;
@@ -88,8 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         display.textContent = num1;
     }
 
-    // If equals is pressed then calculate, if operator is pressed 
-    // then store as variable
+    // If equals is pressed then calculate, if operator is pressed then store as variable
     const btnOps = document.querySelectorAll(".btnOp");
     btnOps.forEach((btn) => {
         btn.addEventListener("click", () => {
