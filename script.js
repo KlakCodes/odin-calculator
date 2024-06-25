@@ -19,7 +19,11 @@ function multiply(a, b) {
 
 // Divide first number by the second
 function divide(a, b) {
-    return a / b;
+    if (isFinite(a / b)) {
+        return a / b;
+    } else {
+        return "Good one..."
+    }
 };
 
 // Call the specified function and run calculation
